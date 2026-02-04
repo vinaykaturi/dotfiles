@@ -1,5 +1,6 @@
 # Setup on a New Machine
 
+
 1.Initialize a bare repository in your home directory:
 ```bash
 git init --bare $HOME/.cfg
@@ -54,6 +55,7 @@ mkdir -p .config-backup && config checkout 2>&1 | grep "^\s" | awk '{print $1}' 
 ```
 
 ## Key Benefits
+
 - No symlinks needed: Files live in their correct locations (~/.zshrc, etc.). 
 - Easy to replicate: Clone the repo and run config checkout on any machine. 
 - Full version control: Track changes, roll back, and collaborate.
