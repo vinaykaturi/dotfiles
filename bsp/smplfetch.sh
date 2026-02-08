@@ -12,7 +12,8 @@ get_mem() { free -h | grep "Mem:" | xargs | awk '{print $3" / "$2}' | sed "s/Gi/
 get_packages() { pacman -Q | wc -l; }
 get_wm() { 
     if [ -n "$WAYLAND_DISPLAY" ]; then
-        echo "$XDG_CURRENT_DESKTOP (Wayland)"
+        WM=$($XDG_CURRENT_DESKTOP --version | awk '{ print $1, $2}')
+        echo "$WM (Wayland)"
     elif [ -n "$DISPLAY" ]; then
          WM=$(wmctrl -m | head -n1 | awk '{print $1}')
          echo $WM
