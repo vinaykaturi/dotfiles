@@ -15,7 +15,7 @@ get_shell() { $SHELL --version | head -1 | sed "s/, version/ /"; }
 get_term() { $TERM --version | awk '{ print $1, $2}'; }
 get_cpu() { lscpu | grep 'Model name:' | cut -d":" -f2 |  xargs; }
 get_mem() { free -h | grep "Mem:" | xargs | awk '{print $3" / "$2}' | sed "s/Gi/ GB/g"; }
-get_packages() { pacman -Q | wc -l;
+get_packages() { pacman -Q | wc -l; }
 get_wm() { 
     if [ -n "$WAYLAND_DISPLAY" ]; then
         WM=$($XDG_CURRENT_DESKTOP --version | awk '{ print $1, $2}')
